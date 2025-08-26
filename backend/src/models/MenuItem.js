@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import Restaurant from './Restaurant';
+const mongoose=require('mongoose');
+const Restaurant=require('./Restaurant');
 
 const menuItemSchema=new mongoose.Schema({
     name:{
@@ -30,4 +30,4 @@ const menuItemSchema=new mongoose.Schema({
 
 const MenuItem=mongoose.model('MenuItem', menuItemSchema);
 
-export default MenuItem;
+module.exports=MenuItem;
