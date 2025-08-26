@@ -4,6 +4,8 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import AdminRoute from './components/AdminRoute';
+import AdminDashboardPage from './pages/AdminDashboardPage';
 
 function App() {
   return (
@@ -15,6 +17,10 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path='/admin' element={<AdminRoute/>}>
+            <Route path='dashboard' element={<AdminDashboardPage/>}>
+            </Route>
+            </Route>
           </Routes>
         </main>
       </div>

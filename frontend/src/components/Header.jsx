@@ -19,8 +19,12 @@ const Header=()=>{
         </Link>
         <div className="space-x-4 flex items-center">
           {user ? (
-            // If user is logged in
             <>
+            {user.role==='admin' && (
+              <Link to = '/admin/dashboard' className='font-semibold hover:text-orange-400'>
+                Admin Dashboard
+              </Link>
+            )}
               <span className="font-semibold">Welcome, {user.name}</span>
               <button
                 onClick={handleLogout}
@@ -30,7 +34,6 @@ const Header=()=>{
               </button>
             </>
           ) : (
-            // If user is not logged in
             <>
               <Link to="/login" className="hover:text-orange-400">
                 Login
