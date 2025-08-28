@@ -26,9 +26,15 @@ const getRestaurants=async()=>{
     return response.data;
 }
 
+const deleteRestaurant=async (id)=>{
+    const response=await axios.delete(API_URL + id, getAuthHeaders());
+    return response.data;
+}
+
 const restaurantService={
     createRestaurant,
     getRestaurants,
+    deleteRestaurant,
 }
 
 export default restaurantService;

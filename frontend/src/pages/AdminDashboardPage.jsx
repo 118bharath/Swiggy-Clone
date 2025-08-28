@@ -41,6 +41,17 @@ const AdminDashboardPage=()=>{
         }
     };
 
+    const handleDelete=async(id)=>{
+      if (window.confirm('Are you sure you want to delete this restaurant ?')){
+        try{
+          await restaurantService.deleteRestaurant(id);
+          fetchRestaurants();
+        }catch{
+          setError('Failed to delte restaurant.')
+        }
+      }
+    }
+
     return (
         <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
@@ -92,9 +103,19 @@ const AdminDashboardPage=()=>{
           {restaurants.length > 0 ? (
             restaurants.map((resto) => (
               <div key={resto._id} className="bg-white p-4 rounded-lg shadow-md">
+                <div>
                 <h3 className="font-bold">{resto.name}</h3>
                 <p>{resto.address}</p>
                 <p className="text-gray-600">{resto.cuisine}</p>
+              </div>
+              <div className='space-x-2'>
+                <button className='bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600'>
+                  Edit
+                </button>
+                <button onClick={()=> handleDelete(resto._id)} className='bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600'>
+                  Delete
+                </button>
+              </div>
               </div>
             ))
           ) : (
