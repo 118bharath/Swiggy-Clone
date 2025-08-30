@@ -6,8 +6,11 @@ const {
     deleteRestaurant,
 }=require('../controllers/restaurantController.js')
 const {protect, admin}=require('../middleware/authMiddleware.js');
+const menuItemRoutes=require('./menuItemRoutes');
 
 const router=express.Router();
+
+router.use('/:restaurantId/menu',menuItemRoutes);
 
 router.route('/').post(protect,admin,createRestaurant);
 router.route('/myrestaurants').get(protect, admin, getRestaurants);
