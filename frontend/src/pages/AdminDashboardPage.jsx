@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import restaurantService from '../services/restaurantService';
 
 const AdminDashboardPage=()=>{
@@ -102,12 +103,13 @@ const AdminDashboardPage=()=>{
         <div className="space-y-4">
           {restaurants.length > 0 ? (
             restaurants.map((resto) => (
-              <div key={resto._id} className="bg-white p-4 rounded-lg shadow-md">
+              <Link key={resto._id} to={`/admin/restaurant/${resto._id}/menu`} className="block bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow">
                 <div>
                 <h3 className="font-bold">{resto.name}</h3>
                 <p>{resto.address}</p>
                 <p className="text-gray-600">{resto.cuisine}</p>
               </div>
+              <span className='text-orange-500 font-semibold'>Manage Menu &rarr;</span>
               <div className='space-x-2'>
                 <button className='bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600'>
                   Edit
@@ -116,7 +118,7 @@ const AdminDashboardPage=()=>{
                   Delete
                 </button>
               </div>
-              </div>
+              </Link>
             ))
           ) : (
             <p>You have not added any restaurants yet.</p>
