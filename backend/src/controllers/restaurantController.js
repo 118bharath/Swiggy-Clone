@@ -1,4 +1,5 @@
 const Restaurant=require('../models/Restaurant.js');
+const MenuItem=require('../models/MenuItem.js');
 
 const updateRestaurant=async(req,res)=>{
     try{
@@ -62,4 +63,28 @@ const getRestaurants= async (req,res)=>{
     }
 }
 
-module.exports ={createRestaurant,getRestaurants, updateRestaurant, deleteRestaurant};
+const getAllRestaurants=async(req,res)=>{
+    try{
+        const restaurants=await Restaurant.find({});
+        res.json(restaurants);
+    } catch (error){
+        res.status(500).json({message: 'Server Error', error:error.message});
+    }
+}
+
+const getRestaurantById=async(req,res)=>{
+    try{
+        const restaurant=await Restaurant.findById(req.params.id);
+        if(!restaurant){
+            return res.status(404).json({message:'Restaurant not found'})
+        }
+
+        const menu=await MenuItem.find({restaurant:req.params.id});
+    res.json({restaurant,menu});
+    }catch(error){
+        res.status(500).json({message:'Server Error', error:error.message})
+    }
+
+}
+
+module.exports ={createRestaurant,getRestaurants, updateRestaurant, deleteRestaurant, getAllRestaurants, getRestaurantById};

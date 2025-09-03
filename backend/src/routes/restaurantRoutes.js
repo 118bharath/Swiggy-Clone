@@ -4,17 +4,21 @@ const {
     getRestaurants,
     updateRestaurant,
     deleteRestaurant,
+    getAllRestaurants,
+    getRestaurantById,
 }=require('../controllers/restaurantController.js')
 const {protect, admin}=require('../middleware/authMiddleware.js');
 const menuItemRoutes=require('./menuItemRoutes');
 
 const router=express.Router();
 
-router.use('/:restaurantId/menu',menuItemRoutes);
+router.route('/').get(getAllRestaurants);
+router.route('/:id').get(getRestaurantById);
 
-router.route('/').post(protect,admin,createRestaurant);
+router.use('/:restaurantId/menu',menuItemRoutes);
 router.route('/myrestaurants').get(protect, admin, getRestaurants);
 
-router.route('/:id').put(protect,admin,updateRestaurant).delete(protect,admin,deleteRestaurant);
+router.route('/create').post(protect,admin,createRestaurant);
+router.route('/:id/admin').put(protect,admin,updateRestaurant).delete(protect,admin,deleteRestaurant);
 
 module.exports=router;
