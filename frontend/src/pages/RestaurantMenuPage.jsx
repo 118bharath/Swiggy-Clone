@@ -50,10 +50,7 @@ const RestaurantMenuPage=()=>{
                                     <p className="text-sm text-gray-600">{item.description}</p>
                                     <p className="text-gray-800 font-semibold mt-1">₹{item.price}</p>
                                 </div>
-                                <button onClick={()=> addToCart(item)} className='bg-orange-500 text-white font-bold px-4 py-2 rouded-lg hover:bg-orange-600'>Add</button>
-                                <button className="bg-orange-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-orange-600">
-                                    Add
-                                </button>
+                                <button onClick={()=> addToCart(item)} className='bg-orange-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-orange-600'>Add</button>
                             </div>
                         ))
                     ) : (
