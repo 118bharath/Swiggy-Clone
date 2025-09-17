@@ -9,6 +9,9 @@ import AdminDashboardPage from './pages/AdminDashboardPage';
 import ManageMenuPage from './pages/ManageMenuPage';
 import RestaurantMenuPage from './pages/RestaurantMenuPage';
 import CartPage from './pages/CartPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import CheckoutPage from './pages/CheckoutPage';
+import MyOrdersPage from './pages/MyOrdersPage';
 
 function App() {
   return (
@@ -25,6 +28,10 @@ function App() {
             <Route path="/admin" element={<AdminRoute/>}>
             <Route path="dashboard" element={<AdminDashboardPage/>}/>
             <Route path="restaurant/:restaurantId/menu" element={<ManageMenuPage/>}/>
+            </Route>
+            <Route path="" element={<ProtectedRoute/>}>
+            <Route path="/checkout" element={<CheckoutPage/>}/>
+            <Route path="/my-orders" element={<MyOrdersPage/>}/>
             </Route>
           </Routes>
         </main>

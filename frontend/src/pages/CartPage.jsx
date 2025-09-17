@@ -55,9 +55,9 @@ const CartPage = () => {
                             <span>Total Amount</span>
                             <span>₹{calculateTotal()}</span>
                         </div>
-                        <button className="mt-6 w-full py-3 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600">
+                        <Link to="/checkout" className="text-center mt-6 w-full py-3 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 block">
                             Proceed to Checkout
-                        </button>
+                        </Link>
                     </div>
                 </div>
             )}

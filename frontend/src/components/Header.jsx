@@ -35,6 +35,9 @@ const Header=()=>{
           </Link>
           {user ? (
             <>
+            <Link to="/my-orders" className='font-semibold hover:text-orange-400'>
+            My Orders
+            </Link>
             {user.role==='admin' && (
               <Link to = '/admin/dashboard' className='font-semibold hover:text-orange-400'>
                 Admin Dashboard
