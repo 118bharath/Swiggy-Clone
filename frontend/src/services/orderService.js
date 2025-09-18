@@ -1,7 +1,5 @@
 import axios from '../api/axios.js';
 
-const API_URL = '/restaurants/';
-
 const getToken=()=>{
     const user=JSON.parse(localStorage.getItem('user'));
     return user ? user.token:null;
@@ -17,25 +15,25 @@ const getAuthHeaders=()=>{
 }
 
 const createOrder=async(orderData)=>{
-    const response=await axios.post(API_URL, orderData, getAuthHeaders());
+    const response=await axios.post('/orders', orderData, getAuthHeaders());
     return response.data;
 }
 
 const getMyOrders=async()=>{
-    const response=await axios.get(API_URL + 'myorders', getAuthHeaders());
+    const response=await axios.get('/orders/myorders', getAuthHeaders());
     return response.data;
 }
 
 //-----ADMIN Functions----
 
 const getAllOrders=async()=>{
-    const response=await axios.get(API_URL,getAuthHeaders());
+    const response=await axios.get('/orders',getAuthHeaders());
     return response.data;
 };
 
 const updateOrderStatus=async (orderId,status)=>{
     const response=await axios.put(
-        `${API_URL}${orderId}/status`,
+        `/orders/${orderId}/status`,
         {status},
         getAuthHeaders()
     );
