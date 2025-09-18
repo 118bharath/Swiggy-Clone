@@ -35,8 +35,11 @@ const CheckoutPage = () => {
             alert('Order placed successfully!');
             clearCart();
             navigate('/my-orders');
-        } catch {
-            alert('Failed to place order.');
+        } catch(error) {
+            const message = 
+            (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            console.error("Order placement failed:", error.response ? error.response.data : error);
+            alert(`Failed to place order: ${message}`);
         }
     };
 
