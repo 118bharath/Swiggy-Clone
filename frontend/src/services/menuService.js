@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from '../api/axios.js';
 
 const getToken=()=>{
     const user=JSON.parse(localStorage.getItem('user'));

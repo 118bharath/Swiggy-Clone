@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from '../api/axios.js';
 
-const API_URL='/api/restaurants/';
+const API_URL = '/restaurants/';
 
 const getToken=()=>{
     const user=JSON.parse(localStorage.getItem('user'));
