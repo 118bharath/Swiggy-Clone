@@ -26,9 +26,27 @@ const getMyOrders=async()=>{
     return response.data;
 }
 
+//-----ADMIN Functions----
+
+const getAllOrders=async()=>{
+    const response=await axios.get(API_URL,getAuthHeaders());
+    return response.data;
+};
+
+const updateOrderStatus=async (orderId,status)=>{
+    const response=await axios.put(
+        `${API_URL}${orderId}/status`,
+        {status},
+        getAuthHeaders()
+    );
+    return response.data;
+};
+
 const orderService={
     createOrder,
     getMyOrders,
+    getAllOrders,
+    updateOrderStatus,
 }
 
 export default orderService;

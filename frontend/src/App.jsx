@@ -12,6 +12,7 @@ import CartPage from './pages/CartPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import CheckoutPage from './pages/CheckoutPage';
 import MyOrdersPage from './pages/MyOrdersPage';
+import AdminOrdersPage from './pages/AdminOrdersPage';
 
 function App() {
   return (
@@ -26,12 +27,13 @@ function App() {
             <Route path="/restaurant/:id" element={<RestaurantMenuPage/>}/>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/admin" element={<AdminRoute/>}>
-            <Route path="dashboard" element={<AdminDashboardPage/>}/>
-            <Route path="restaurant/:restaurantId/menu" element={<ManageMenuPage/>}/>
+                <Route path="dashboard" element={<AdminDashboardPage/>}/>
+                <Route path="restaurant/:restaurantId/menu" element={<ManageMenuPage/>}/>
+                <Route path="orders" element={<AdminOrdersPage/>}/>
             </Route>
             <Route path="" element={<ProtectedRoute/>}>
-            <Route path="/checkout" element={<CheckoutPage/>}/>
-            <Route path="/my-orders" element={<MyOrdersPage/>}/>
+                <Route path="/checkout" element={<CheckoutPage/>}/>
+                <Route path="/my-orders" element={<MyOrdersPage/>}/>
             </Route>
           </Routes>
         </main>
